@@ -354,7 +354,8 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) =&gt; {
             // 1. call API to fetch challenge
             var buttons = document.getElementById('buttonPanel');
             buttons.style.display = 'none';
-            fetch('http://stormbird.duckdns.org:8085/api/getChallenge')
+            //fetch('http://stormbird.duckdns.org:8085/api/getChallenge')
+            fetch('http://192.168.1.102:8080/api/getChallenge')
                 .then(function (response) {
                     return response.text()
                 })
@@ -379,7 +380,8 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) =&gt; {
                 document.getElementById('status').innerHTML = 'Verifying credentials ...'
                 // 3. open door
                 let contractAddress = document.getElementById("contractAddress").textContent;
-                fetch(`http://stormbird.duckdns.org:8085/api/checkSignature?openTime=120&amp;sig=${value}`)
+                //fetch(`http://stormbird.duckdns.org:8085/api/checkSignature?openTime=120&amp;sig=${value}`)
+                fetch(`http://192.168.1.102:8080/api/checkSignature?openTime=120&amp;sig=${value}`)
                     .then(function (response) {
                         return response.text()
                     })
@@ -400,7 +402,8 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) =&gt; {
 
     function carControl(apiType)
     {
-        fetch('http://stormbird.duckdns.org:8085/api/' + apiType + '?addr=' + web3.tokens.data.currentInstance.ownerAddress)
+        //fetch('http://stormbird.duckdns.org:8085/api/' + apiType + '?addr=' + web3.tokens.data.currentInstance.ownerAddress)
+        fetch('http://192.168.1.102:8080/api/' + apiType + '?addr=' + web3.tokens.data.currentInstance.ownerAddress)
                 .then(function (response) {
                     return response.text()
                 })
@@ -413,18 +416,28 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) =&gt; {
                 <h3>Karma Car Token</h3>
                 <div id="msg">Please wait for challenge ...</div>
                 <div id="buttonPanel" >
-                    <p id="layerF">
-                        <button onclick="carControl('allForward')" id="forwardButton" class="stormbut">Forward</button>
-                    </p>
-                    <p id="layerB">
-                        <button onclick="carControl('backwards')" id="backButton" class="stormbut">Backward</button>
-                    </p>
-                    <p id="layerL">
-                        <button onclick="carControl('turnLeft')" id="leftButton" class="stormbut">Left</button>
-                    </p>
-                    <p id="layerR">
-                        <button onclick="carControl('turnRight')" id="rightButton" class="stormbut">Right</button>
-                    </p>
+                <table style="text-align: center;" border="0" cellpadding="2" width="80%" cellspacing="2">
+                  <tbody>
+	                  <tr>
+	                    <td>   </td><td></td>
+	<td><button onclick="carControl('allForward')" id="forwardButton" class="stormbut">Forward</button></td>
+	<td></td><td>   </td>
+	</tr>
+	<tr><td>   </td></tr>
+	<tr>
+	<td>   </td>
+	<td><button onclick="carControl('turnLeft')" id="leftButton" class="stormbut">Left</button></td><td></td>
+	<td><button onclick="carControl('turnRight')" id="rightButton" class="stormbut">Right</button></td>
+  <td>   </td>
+	</tr>
+	<tr><td> </td></tr>
+	<tr>
+	<td>   </td><td></td>
+	<td><button onclick="carControl('backwards')" id="backButton" class="stormbut">Backward</button></td>
+	<td></td><td>   </td>
+	</tr>
+</tbody>
+</table>
                 </div>
                 <div id="contractAddress"/>
                 <div id="status"/>
