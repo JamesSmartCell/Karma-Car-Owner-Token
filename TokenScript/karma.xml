@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><ts:token xmlns:ts="http://tokenscript.org/2019/05/tokenscript" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" custodian="false" xsi:schemaLocation="http://tokenscript.org/2019/05/tokenscript">
+    <ts:name>
+        <ts:plurals xml:lang="en">
+            <ts:string quantity="one">Car Ownership Token</ts:string>
+            <ts:string quantity="other">Car Ownership Tokens</ts:string>
+        </ts:plurals>
+        <ts:plurals xml:lang="es">
+            <ts:string quantity="one">Token de propiedad del automóvil</ts:string>
+            <ts:string quantity="other">Token de propiedad del automóviles</ts:string>
+        </ts:plurals>
+        <ts:plurals xml:lang="zh">
+            <ts:string quantity="one">汽车所有权令牌</ts:string>
+            <ts:string quantity="other">汽车所有权令牌</ts:string>
+        </ts:plurals>
+    </ts:name>
+    <ts:contract interface="erc875" name="EntryToken">
+        <ts:address network="4">0xD5bE89AD0F3Ce89e72BAf4211A980F8367E2D668</ts:address>
+    </ts:contract>
+  <ts:origins>
+    <!-- Define the contract which holds the token that the user will use -->
+    <ts:ethereum contract="EntryToken">
+    </ts:ethereum>
+  </ts:origins>
+  <ts:selections>
+    <ts:selection id="expired">
+      <ts:name>
+        <ts:plurals xml:lang="en">
+          <ts:string quantity="one">Expired Ticket</ts:string>
+          <ts:string quantity="other">Expired Tickets</ts:string>
+        </ts:plurals>
+        <ts:string xml:lang="zh">已经过期的票</ts:string>
+      </ts:name>
+      <ts:filter>expired</ts:filter>
+    </ts:selection>
+  </ts:selections>
+  <ts:cards>
+    <ts:token-card>
+      <style type="text/css">.ts-count {
+  font-family: "SourceSansPro";
+  font-weight: bolder;
+  font-size: 21px;
+  color: rgb(117, 185, 67);
+}
+.ts-category {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 21px;
+  color: rgb(67, 67, 67);
+}
+.ts-venue {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 16px;
+  color: rgb(67, 67, 67);
+}
+.ts-date {
+  font-family: "SourceSansPro";
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(112, 112, 112);
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.ts-time {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 16px;
+  color: rgb(112, 112, 112);
+}
+html {
+}
+
+body {
+padding: 0px;
+margin: 0px;
+}
+
+div {
+margin: 0px;
+padding: 0px;
+}
+
+.data-icon {
+height:16px;
+vertical-align: middle
+}
+
+.tbml-count {   font-family: "SourceSansPro";   font-weight: bolder;   font-size: 21px;   color: rgb(117, 185, 67); } .tbml-category {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 21px;   color: rgb(67, 67, 67); } .tbml-venue {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(67, 67, 67); } .tbml-date {   font-family: "SourceSansPro";   font-weight: bold;   font-size: 14px;   color: rgb(112, 112, 112);   margin-left: 7px;   margin-right: 7px; } .tbml-time {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(112, 112, 112); }    html {    }        body {    padding: 0px;    margin: 0px;    }        div {    margin: 0px;    padding: 0px;    }     .data-icon {    height:16px;    vertical-align: middle    }
+
+.stormbut { background-color: #195B6A; border: none; color: white; padding: 16px 40px; }
+.stormbutwide { background-color: #DB393A; justify-content: center; padding: 16px 30px 16px 30px; text-align: center; border: none; color: white; width: 100%; }
+
+</style>
+      <ts:view-iconified xml:lang="en">
+        <div>
+    <!-- Iconified view displayed on the first page when clicking on token card in AlphaWallet -->
+    <p>Your Karma Ownership
+        <img alt="" src="data:image/jpeg;base64,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"></img>
+    </p>
+</div>
+
+      </ts:view-iconified>
+      <ts:view xml:lang="en">
+        <script type="text/javascript">
+    (function() {
+        'use strict'
+        function GeneralizedTime(generalizedTime) {
+            this.rawData = generalizedTime;
+        }
+
+        GeneralizedTime.prototype.getYear = function () {
+            return parseInt(this.rawData.substring(0, 4), 10);
+        };
+
+        GeneralizedTime.prototype.getMonth = function () {
+            return parseInt(this.rawData.substring(4, 6), 10) - 1;
+        };
+
+        GeneralizedTime.prototype.getDay = function () {
+            return parseInt(this.rawData.substring(6, 8), 10)
+        };
+
+        GeneralizedTime.prototype.getHours = function () {
+            return parseInt(this.rawData.substring(8, 10), 10)
+        };
+
+        GeneralizedTime.prototype.getMinutes = function () {
+            var minutes = parseInt(this.rawData.substring(10, 12), 10)
+            if (minutes) return minutes
+            return 0
+        };
+
+        GeneralizedTime.prototype.getSeconds = function () {
+            var seconds = parseInt(this.rawData.substring(12, 14), 10)
+            if (seconds) return seconds
+            return 0
+        };
+
+        GeneralizedTime.prototype.getMilliseconds = function () {
+            var startIdx
+            if (time.indexOf('.') !== -1) {
+                startIdx = this.rawData.indexOf('.') + 1
+            } else if (time.indexOf(',') !== -1) {
+                startIdx = this.rawData.indexOf(',') + 1
+            } else {
+                return 0
+            }
+
+            var stopIdx = time.length - 1
+            var fraction = '0' + '.' + time.substring(startIdx, stopIdx)
+            var ms = parseFloat(fraction) * 1000
+            return ms
+        };
+
+        GeneralizedTime.prototype.getTimeZone = function () {
+            let time = this.rawData;
+            var length = time.length
+            var symbolIdx
+            if (time.charAt(length - 1 ) === 'Z'){
+                return 0
+            }
+            if (time.indexOf('+') !== -1) {
+                symbolIdx = time.indexOf('+')
+            } else if (time.indexOf('-') !== -1) {
+                symbolIdx = time.indexOf('-')
+            } else {
+                return NaN
+            }
+            var minutes = time.substring(symbolIdx + 2)
+            var hours = time.substring(symbolIdx + 1, symbolIdx + 2)
+            var one = (time.charAt(symbolIdx) === '+') ? 1 : -1
+            var intHr = one * parseInt(hours, 10) * 60 * 60 * 1000
+            var intMin = one * parseInt(minutes, 10) * 60 * 1000
+            var ms = minutes ? intHr + intMin : intHr
+            return ms
+        };
+
+        if (typeof exports === 'object') {
+            module.exports = GeneralizedTime
+        } else if (typeof define === 'function') {
+            define(GeneralizedTime)
+        } else {
+            window.GeneralizedTime = GeneralizedTime
+        }
+    }())
+</script>
+<script type="text/javascript">
+class Token {
+    constructor(tokenInstance) {
+        this.props = tokenInstance;
+    }
+
+    formatGeneralizedTimeToDate(str) {
+        const d = new GeneralizedTime(str);
+        return new Date(d.getYear(), d.getMonth(), d.getDay(), d.getHours(), d.getMinutes(), d.getSeconds()).toLocaleDateString();
+    }
+
+    formatGeneralizedTimeToTime(str) {
+        const d = new GeneralizedTime(str);
+        return new Date(d.getYear(), d.getMonth(), d.getDay(), d.getHours(), d.getMinutes(), d.getSeconds()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    }
+
+    render() {
+        let time;
+        let date;
+        if (this.props.time == null) {
+            time = "";
+            date = "";
+        } else {
+            time = this.formatGeneralizedTimeToTime(this.props.time.generalizedTime);
+            date = this.props.time == null ? "": this.formatGeneralizedTimeToDate(this.props.time.generalizedTime);
+        }
+        return `&lt;div&gt;
+            &lt;div&gt;
+                &lt;span class="ts-count"&gt;x${this.props._count}&lt;/span&gt;  &lt;span class="ts-category"&gt;${this.props.name}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;span class="ts-venue"&gt;${this.props.building}&lt;/span&gt;
+            &lt;/div&gt;
+                &lt;div style="margin: 0px; padding:0px; clear: both; height: 6px"&gt;
+                &amp;nbsp;
+                &lt;/div&gt;
+            &lt;div&gt;
+                &lt;img src="data:image/png;base64,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" class="data-icon"/&gt;
+                &lt;span class="ts-date"&gt;${date}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;span class="ts-time"&gt;${time}, ${this.props.locality}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;`;
+    }
+}
+
+web3.tokens.dataChanged = (oldTokens, updatedTokens) =&gt; {
+    const currentTokenInstance = web3.tokens.data.currentInstance;
+    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+};
+
+</script>
+<div id="root"/>
+
+      </ts:view>
+    </ts:token-card>
+    <ts:action>
+      <ts:name>
+        <ts:string xml:lang="en">Start</ts:string>
+        <ts:string xml:lang="zh">入場</ts:string>
+        <ts:string xml:lang="es">Entrar</ts:string>
+      </ts:name>
+      <ts:exclude selection="expired"/>
+      <style type="text/css">.ts-count {
+  font-family: "SourceSansPro";
+  font-weight: bolder;
+  font-size: 21px;
+  color: rgb(117, 185, 67);
+}
+.ts-category {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 21px;
+  color: rgb(67, 67, 67);
+}
+.ts-venue {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 16px;
+  color: rgb(67, 67, 67);
+}
+.ts-date {
+  font-family: "SourceSansPro";
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(112, 112, 112);
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.ts-time {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 16px;
+  color: rgb(112, 112, 112);
+}
+html {
+}
+
+body {
+padding: 0px;
+margin: 0px;
+}
+
+div {
+margin: 0px;
+padding: 0px;
+}
+
+.data-icon {
+height:16px;
+vertical-align: middle
+}
+
+.tbml-count {   font-family: "SourceSansPro";   font-weight: bolder;   font-size: 21px;   color: rgb(117, 185, 67); } .tbml-category {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 21px;   color: rgb(67, 67, 67); } .tbml-venue {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(67, 67, 67); } .tbml-date {   font-family: "SourceSansPro";   font-weight: bold;   font-size: 14px;   color: rgb(112, 112, 112);   margin-left: 7px;   margin-right: 7px; } .tbml-time {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(112, 112, 112); }    html {    }        body {    padding: 0px;    margin: 0px;    }        div {    margin: 0px;    padding: 0px;    }     .data-icon {    height:16px;    vertical-align: middle    } 
+        #bodyWrap
+        {
+            margin-left: 3%;
+            margin-bottom: 3%;
+            margin-right: 3%;
+        }
+        h1{
+            text-align: center;
+        }
+        #script {
+            width:90%;
+            height: 500px;
+        }
+        #contractAddress {
+            width: 50%;
+        }
+
+        .textarea-label
+        {
+          display: block;
+        }
+
+        .textarea-label textarea
+        {
+          border: 0 none;
+          margin: 0;
+          outline: 0 none;
+          padding: 0;
+          width: 100%;
+        }
+
+        .stormbut { background-color: #195B6A; border: none; color: white; padding: 16px 40px; }
+        .stormbutwide { background-color: #DB393A; justify-content: center; padding: 16px 30px 16px 30px; text-align: center; border: none; color: white; width: 100%;  }  
+</style>
+      <ts:view xml:lang="en">
+        <script type="text/javascript">
+class Token {
+    constructor(tokenInstance) {
+        this.props = tokenInstance
+        document.getElementById("contractAddress").value = this.props.EntryToken;
+    }
+}
+
+web3.tokens.dataChanged = (oldTokens, updatedTokens) =&gt; {
+    const currentTokenInstance = web3.tokens.data.currentInstance;
+    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+};
+
+</script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        window.onload = function startup() {
+            // 1. call API to fetch challenge
+            var buttons = document.getElementById('buttonPanel');
+            buttons.style.display = 'none';
+            fetch('http://stormbird.duckdns.org:8085/api/getChallenge')
+                .then(function (response) {
+                    return response.text()
+                })
+                .then(function (response) {
+                    document.getElementById('msg').innerHTML = 'Challenge: ' + response
+                    window.challenge = response
+                })
+        }
+
+        window.onConfirm = function onConfirm(signature) {
+            if (window.challenge === undefined || window.challenge.length == 0) return
+            const challenge = window.challenge
+            document.getElementById('status').innerHTML = 'Wait for signature...'
+            // 2. sign challenge to generate response
+            web3.personal.sign({ data: challenge }, function (error, value) {
+                if (error != null) {
+                    document.getElementById('status').innerHTML = error
+                    window.onload();
+                    return
+                }
+
+                document.getElementById('status').innerHTML = 'Verifying credentials ...'
+                // 3. open door
+                let contractAddress = document.getElementById("contractAddress").textContent;
+                fetch(`http://stormbird.duckdns.org:8085/api/checkSignature?openTime=120&amp;sig=${value}`)
+                    .then(function (response) {
+                        return response.text()
+                    })
+                    .then(function (response) {
+                        if (response == "pass") {
+                            var buttons = document.getElementById("buttonPanel");
+                            document.getElementById('status').innerHTML = 'You have control!'
+                            buttons.style.display = '';       
+                        } else {
+                            document.getElementById('status').innerHTML = 'Failed with: ' + response
+                        }
+                    })
+            });
+            window.challenge = '';
+            document.getElementById('msg').innerHTML = '';
+        }
+    })
+
+    function carControl(apiType)
+    {
+        fetch('http://stormbird.duckdns.org:8085/api/' + apiType + '?addr=' + web3.tokens.data.currentInstance.ownerAddress)
+                .then(function (response) {
+                    return response.text()
+                })
+                .then(function (response) {
+                    document.getElementById('msg').innerHTML = 'Input: ' + response
+                    window.challenge = response
+                })
+    }
+</script>
+                <h3>Karma Car Token</h3>
+                <div id="msg">Please wait for challenge ...</div>
+                <div id="buttonPanel" >
+                    <p id="layerF">
+                        <button onclick="carControl('allForward')" id="forwardButton" class="stormbut">Forward</button>
+                    </p>
+                    <p id="layerB">
+                        <button onclick="carControl('backwards')" id="backButton" class="stormbut">Backward</button>
+                    </p>
+                    <p id="layerL">
+                        <button onclick="carControl('turnLeft')" id="leftButton" class="stormbut">Left</button>
+                    </p>
+                    <p id="layerR">
+                        <button onclick="carControl('turnRight')" id="rightButton" class="stormbut">Right</button>
+                    </p>
+                </div>
+                <div id="contractAddress"/>
+                <div id="status"/>
+
+      </ts:view>
+    </ts:action>
+    <ts:action>
+      <ts:name>
+        <ts:string xml:lang="en">Attestations</ts:string>
+        <ts:string xml:lang="zh">认证</ts:string>
+        <ts:string xml:lang="es">Attestationes</ts:string>
+      </ts:name>
+      <ts:exclude selection="expired"/>
+      <style type="text/css">
+
+      .ts-count {
+  font-family: "SourceSansPro";
+  font-weight: bolder;
+  font-size: 21px;
+  color: rgb(117, 185, 67);
+}
+
+html {
+}
+
+body {
+padding: 0px;
+margin: 0px;
+}
+
+div {
+margin: 0px;
+padding: 0px;
+}
+
+.data-icon {
+height:16px;
+vertical-align: middle
+}
+
+.tbml-count {   font-family: "SourceSansPro";   font-weight: bolder;   font-size: 21px;   color: rgb(117, 185, 67); } .tbml-category {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 21px;   color: rgb(67, 67, 67); } .tbml-venue {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(67, 67, 67); } .tbml-date {   font-family: "SourceSansPro";   font-weight: bold;   font-size: 14px;   color: rgb(112, 112, 112);   margin-left: 7px;   margin-right: 7px; } .tbml-time {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(112, 112, 112); }    html {    }        body {    padding: 0px;    margin: 0px;    }        div {    margin: 0px;    padding: 0px;    }     .data-icon {    height:16px;    vertical-align: middle    } 
+        #bodyWrap
+        {
+            margin-left: 3%;
+            margin-bottom: 3%;
+            margin-right: 3%;
+        }
+        h1{
+            text-align: center;
+        }
+        #script {
+            width:90%;
+            height: 500px;
+        }
+        #contractAddress {
+            width: 50%;
+        }
+
+        .textarea-label
+        {
+          display: block;
+        }
+
+        .textarea-label textarea
+        {
+          border: 0 none;
+          margin: 0;
+          outline: 0 none;
+          padding: 0;
+          width: 100%;
+        }
+
+        .stormbut { background-color: #195B6A; border: none; color: white; padding: 16px 40px; }
+        .stormbutwide { background-color: #DB393A; justify-content: center; padding: 16px 30px 16px 30px; text-align: center; border: none; color: white; width: 100%; }
+        
+</style>
+      <ts:view xml:lang="en">
+                <h3>Karma Attestations</h3>
+<table style="text-align: left;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr><td><h4>Claim Attestations</h4></td></tr>
+    <tr>
+      <td><span class="ts-count">Registration</span></td>
+      <td><span style="font-family: monospace;">Issuer: </span></td>
+      <td>NSW Transport Auth</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><span style="font-family: monospace;">Expiry: </span></td>
+      <td>23/6/2020</td>
+    </tr>
+    <tr><td> </td></tr>
+    <tr>
+      <td><span class="ts-count">Insurance</span></td>
+      <td><span style="font-family: monospace;">Issuer: </span></td>
+      <td>Alliance</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><span style="font-family: monospace;">Expiry: </span></td>
+      <td>15/03/2020</td>
+    </tr>
+    <tr><td> </td></tr>
+    <tr>
+      <td><span class="ts-count">Service</span></td>
+      <td><span style="font-family: monospace;">Due: </span></td>
+      <td>31/10/2019</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><span style="font-family: monospace;">Milage: </span></td>
+      <td>20,000</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><span style="font-family: monospace;">Svs Level:</span></td>
+      <td>Full</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><span style="font-family: monospace;">Recommended:</span></td>
+      <td>Karma Service</td>
+    </tr>
+  </tbody>
+</table>
+      </ts:view>
+    </ts:action>
+    <ts:action>
+      <ts:name>
+        <ts:string xml:lang="en">Market</ts:string>
+        <ts:string xml:lang="zh">市场</ts:string>
+        <ts:string xml:lang="es">Market</ts:string>
+      </ts:name>
+      <ts:exclude selection="expired"/>
+      <style type="text/css">.ts-count {
+  font-family: "SourceSansPro";
+  font-weight: bolder;
+  font-size: 21px;
+  color: rgb(117, 185, 67);
+}
+.ts-category {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 21px;
+  color: rgb(67, 67, 67);
+}
+.ts-venue {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 16px;
+  color: rgb(67, 67, 67);
+}
+.ts-date {
+  font-family: "SourceSansPro";
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(112, 112, 112);
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.ts-time {
+  font-family: "SourceSansPro";
+  font-weight: lighter;
+  font-size: 16px;
+  color: rgb(112, 112, 112);
+}
+html {
+}
+
+body {
+padding: 0px;
+margin: 0px;
+}
+
+div {
+margin: 0px;
+padding: 0px;
+}
+
+.data-icon {
+height:16px;
+vertical-align: middle
+}
+
+.tbml-count {   font-family: "SourceSansPro";   font-weight: bolder;   font-size: 21px;   color: rgb(117, 185, 67); } .tbml-category {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 21px;   color: rgb(67, 67, 67); } .tbml-venue {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(67, 67, 67); } .tbml-date {   font-family: "SourceSansPro";   font-weight: bold;   font-size: 14px;   color: rgb(112, 112, 112);   margin-left: 7px;   margin-right: 7px; } .tbml-time {   font-family: "SourceSansPro";   font-weight: lighter;   font-size: 16px;   color: rgb(112, 112, 112); }    html {    }        body {    padding: 0px;    margin: 0px;    }        div {    margin: 0px;    padding: 0px;    }     .data-icon {    height:16px;    vertical-align: middle    } 
+        #bodyWrap
+        {
+            margin-left: 3%;
+            margin-bottom: 3%;
+            margin-right: 3%;
+        }
+        h1{
+            text-align: center;
+        }
+        #script {
+            width:90%;
+            height: 500px;
+        }
+        #contractAddress {
+            width: 50%;
+        }
+
+        .textarea-label
+        {
+          display: block;
+        }
+
+        .textarea-label textarea
+        {
+          border: 0 none;
+          margin: 0;
+          outline: 0 none;
+          padding: 0;
+          width: 100%;
+        }
+
+        .stormbut { background-color: #195B6A; border: none; color: white; padding: 16px 40px; }
+        .stormbutwide { background-color: #DB393A; justify-content: center; padding: 16px 30px 16px 30px; text-align: center; border: none; color: white; width: 100%; }
+        
+      </style>
+      <ts:view xml:lang="en">
+<h3>Market</h3>
+<table style="text-align: center;" border="0" cellpadding="2" width="80%" cellspacing="2">
+<tbody>
+	<tr>
+	<td>   </td>
+	<td><button onclick="carControl('allForward')" id="forwardButton" class="stormbutwide">List for Sale</button></td>
+	<td>   </td>
+	</tr>
+	<tr><td> </td></tr>
+	<tr>
+	<td>   </td>
+	<td><button onclick="carControl('allForward')" id="forwardButton" class="stormbutwide">Auction</button></td>
+	<td>   </td>
+	</tr>
+	<tr><td> </td></tr>
+	<tr>
+	<td>   </td>
+	<td><button onclick="carControl('allForward')" id="forwardButton" class="stormbutwide">Collateralise</button></td>
+	<td>   </td>
+	</tr>
+	<tr><td> </td></tr>
+	<tr>
+	<td>   </td>
+	<td><button onclick="carControl('allForward')" id="forwardButton" class="stormbutwide">List for Hire</button></td>
+	<td>   </td>
+	</tr>
+</tbody>
+</table>
+
+      </ts:view>
+    </ts:action>
+  </ts:cards>
+  <ts:attribute-types>
+    <ts:attribute-type id="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+      <ts:origins>
+        <ts:ethereum as="utf8" contract="EntryToken" function="getLocality">
+            <ts:data>
+              <ts:uint256 ref="tokenId"/>
+            </ts:data>
+        </ts:ethereum>
+      </ts:origins>
+
+    </ts:attribute-type>
+    <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
+            <ts:name>
+                <ts:string xml:lang="en">Time</ts:string>
+                <ts:string xml:lang="zh">时间</ts:string>
+            </ts:name>
+            <ts:origins>
+                <ts:token-id as="utf8" bitmask="00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"/>
+            </ts:origins>
+    </ts:attribute-type>
+    <ts:attribute-type id="expired" syntax="1.3.6.1.4.1.1466.115.121.1.7"> <!-- boolean -->
+      <ts:origins>
+        <ts:ethereum as="bool" contract="EntryToken" function="isExpired">
+          <ts:data>
+            <ts:uint256 ref="tokenId"/>
+          </ts:data>
+        </ts:ethereum>
+      </ts:origins>
+    </ts:attribute-type>
+    <ts:attribute-type id="street" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+      <ts:origins>
+        <ts:ethereum as="utf8" contract="EntryToken" function="getStreet">
+          <ts:data>
+            <ts:uint256 ref="tokenId"/>
+          </ts:data>
+        </ts:ethereum>
+      </ts:origins>
+    </ts:attribute-type>
+    <ts:attribute-type id="building" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+      <ts:origins>
+        <ts:ethereum as="utf8" contract="EntryToken" function="getBuildingName">
+          <ts:data>
+            <ts:uint256 ref="tokenId"/>
+          </ts:data>
+        </ts:ethereum>
+      </ts:origins>
+    </ts:attribute-type>
+    <ts:attribute-type id="state" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+      <ts:origins>
+        <ts:ethereum as="utf8" contract="EntryToken" function="getState">
+          <ts:data>
+            <ts:uint256 ref="tokenId"/>
+          </ts:data>
+        </ts:ethereum>
+      </ts:origins>
+    </ts:attribute-type>
+</ts:attribute-types>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<ds:Reference URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>AFUI6VRpk4mNCxANNd0G/nBLHgZ75yVZL2x9nWUnSs4=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+G4rO0rdDMzl6++cY7Qby8GDUeqU94DJLWhBkKhw6xtjbkN5f79itpYTtyLdcw0SujIG9y+CX/9eq
+B1ZIIcaHnl4FxU7Zkw/rDTGtlk3OBwJcQLx5dZPDKpG0nrZKxEmnS8kO4TDTdEajWGMqbw4zzkkg
+PWIaS9UI26H1MRjFg06F3dKEsVqle9KCkBeA6jO5DG4ExWmYhmSaffs6aU60MY7Qk+u7ykVyUdV/
+IjBqGYhbKp0f2nKdahQeliZi8ybRd/ZWMK2G7bbcIS9Q4WlwSotxTMB7+jDClEAX74wllTNu1fzW
+TnZYB3MAxp05pVQ2PbZ2PaP4Veqq015s0Sxw+g==
+</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:KeyName>Shong Wang</ds:KeyName>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+peSpIYeayLQ28M7+PYPGD2b7sg95umoiYanY5c/NPjFWTgij8wgjT769HFeO22x1zf8ZeLQ4W9T5
+JVpIHaF8LFnJsNDnVIhrT8Y/hSj3YRoVJGHdKpAD9T3xxRsgPqcRozctUXQMDKkInxRwmycK3RZ7
+kDs36trrx4+MK8zy2Z1ZSOiIlLrt2q0PvaA+HsdLoAR51RntqL/KOjJxpLMe90gcBFzRPfZX5jxG
+QnWXzlVh7SGfDaIV+KNk36ZdL9Teh5PZjY9wxl5nzmUhG0vk0wxpPsttLpomVFIxAyLl15+6iS2H
+cpWl6XcMLkA45VaW1bAnYFGaofO9m6GSJucDMw==
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+<ds:X509Data>
+<ds:X509Certificate>
+MIIFuDCCBKCgAwIBAgISA392mIEG1NiO0K8D7zDAR9CkMA0GCSqGSIb3DQEBCwUAMEoxCzAJBgNV
+BAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQDExpMZXQncyBFbmNyeXB0IEF1
+dGhvcml0eSBYMzAeFw0xOTA3MTMwMjUxMjJaFw0xOTEwMTEwMjUxMjJaMBExDzANBgNVBAMTBmF3
+LmFwcDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKXkqSGHmsi0NvDO/j2Dxg9m+7IP
+ebpqImGp2OXPzT4xVk4Io/MII0++vRxXjttsdc3/GXi0OFvU+SVaSB2hfCxZybDQ51SIa0/GP4Uo
+92EaFSRh3SqQA/U98cUbID6nEaM3LVF0DAypCJ8UcJsnCt0We5A7N+ra68ePjCvM8tmdWUjoiJS6
+7dqtD72gPh7HS6AEedUZ7ai/yjoycaSzHvdIHARc0T32V+Y8RkJ1l85VYe0hnw2iFfijZN+mXS/U
+3oeT2Y2PcMZeZ85lIRtL5NMMaT7LbS6aJlRSMQMi5defuokth3KVpel3DC5AOOVWltWwJ2BRmqHz
+vZuhkibnAzMCAwEAAaOCAs8wggLLMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcD
+AQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUa3aCJ+oy5AuqTKSEX6CJRgvBcPww
+HwYDVR0jBBgwFoAUqEpqYwR93brm0Tm3pkVl7/Oo7KEwbwYIKwYBBQUHAQEEYzBhMC4GCCsGAQUF
+BzABhiJodHRwOi8vb2NzcC5pbnQteDMubGV0c2VuY3J5cHQub3JnMC8GCCsGAQUFBzAChiNodHRw
+Oi8vY2VydC5pbnQteDMubGV0c2VuY3J5cHQub3JnLzCBhAYDVR0RBH0we4IGYXcuYXBwgg5jbGFz
+c2ljLmF3LmFwcIINZ29lcmxpLmF3LmFwcIIMa292YW4uYXcuYXBwggpwb2EuYXcuYXBwggtyZXBv
+LmF3LmFwcIIOcmlua2VieS5hdy5hcHCCDnJvcHN0ZW4uYXcuYXBwggt4ZGFpLmF3LmFwcDBMBgNV
+HSAERTBDMAgGBmeBDAECATA3BgsrBgEEAYLfEwEBATAoMCYGCCsGAQUFBwIBFhpodHRwOi8vY3Bz
+LmxldHNlbmNyeXB0Lm9yZzCCAQQGCisGAQQB1nkCBAIEgfUEgfIA8AB3AOJpS64m6OlACeiGG7Y7
+g9Q+5/50iPukjyiTAZ3d8dv+AAABa+l07b8AAAQDAEgwRgIhAPN9sHZMi7pMqBfzbrUjCV73yGUE
+6EKGgEHIUTp/krvzAiEAyuqug1VXzCsssbquy5qfj3ISZBwC3YOtXn+KpGpdhocAdQBj8tvN6DvM
+LM8LcoQnV2szpI1hd4+9daY4scdoVEvYjQAAAWvpdO3gAAAEAwBGMEQCIG6NH2n3hkXjUx3t/YfO
+CBSjQCgg0xHMy+DxC6KSGv7lAiA3pqlidBSlIszm+3GpmH5q84pDWs4N0k330ZqSsaUZXDANBgkq
+hkiG9w0BAQsFAAOCAQEAmbsbviQEI3Ko1wDmy0sRu5cM6ILcCyJVQotDFWUplEnCpkdWWv2ru23T
+xV2MYrWH5z+rZT319KZPmvtbAO+WBN3SvAEANnA/+tWtpTp7vlqa+S7qIIbL5aiOu4VIeIkaQYpF
+3OMT+AoOsYQ1Btc3DU9XymCFgHL93ftIeveAdiA7hLWm2+U/X+VOHbrDXL7/I9hvJAVY080dc+kJ
+nUfqTj6zm3i2WCAMV3yi5ssLiNcylo4c9AsrwYiGKa8QpmTP292ncdoVw35X+Nooe0VNZXyyYWA0
+yrRvHDIHI27yv6fXa4JZRGGOEFf4uArxhOZ5ZyjWEypAtqBhsEFBz1y2LQ==
+</ds:X509Certificate>
+<ds:X509Certificate>
+MIIEkjCCA3qgAwIBAgIQCgFBQgAAAVOFc2oLheynCDANBgkqhkiG9w0BAQsFADA/MSQwIgYDVQQK
+ExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMTDkRTVCBSb290IENBIFgzMB4X
+DTE2MDMxNzE2NDA0NloXDTIxMDMxNzE2NDA0NlowSjELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUxl
+dCdzIEVuY3J5cHQxIzAhBgNVBAMTGkxldCdzIEVuY3J5cHQgQXV0aG9yaXR5IFgzMIIBIjANBgkq
+hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnNMM8FrlLke3cl03g7NoYzDq1zUmGSXhvb418XCSL7e4
+S0EFq6meNQhY7LEqxGiHC6PjdeTm86dicbp5gWAf15Gan/PQeGdxyGkOlZHP/uaZ6WA8SMx+yk13
+EiSdRxta67nsHjcAHJyse6cF6s5K671B5TaYucv9bTyWaN8jKkKQDIZ0Z8h/pZq4UmEUEz9l6YKH
+y9v6Dlb2honzhT+Xhq+w3Brvaw2VFn3EK6BlspkENnWAa6xK8xuQSXgvopZPKiAlKQTGdMDQMc2P
+MTiVFrqoM7hD8bEfwzB/onkxEz0tNvjj/PIzark5McWvxI0NHWQWM6r6hCm21AvA2H3DkwIDAQAB
+o4IBfTCCAXkwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAYYwfwYIKwYBBQUHAQEE
+czBxMDIGCCsGAQUFBzABhiZodHRwOi8vaXNyZy50cnVzdGlkLm9jc3AuaWRlbnRydXN0LmNvbTA7
+BggrBgEFBQcwAoYvaHR0cDovL2FwcHMuaWRlbnRydXN0LmNvbS9yb290cy9kc3Ryb290Y2F4My5w
+N2MwHwYDVR0jBBgwFoAUxKexpHsscfrb4UuQdf/EFWCFiRAwVAYDVR0gBE0wSzAIBgZngQwBAgEw
+PwYLKwYBBAGC3xMBAQEwMDAuBggrBgEFBQcCARYiaHR0cDovL2Nwcy5yb290LXgxLmxldHNlbmNy
+eXB0Lm9yZzA8BgNVHR8ENTAzMDGgL6AthitodHRwOi8vY3JsLmlkZW50cnVzdC5jb20vRFNUUk9P
+VENBWDNDUkwuY3JsMB0GA1UdDgQWBBSoSmpjBH3duubRObemRWXv86jsoTANBgkqhkiG9w0BAQsF
+AAOCAQEA3TPXEfNjWDjdGBX7CVW+dla5cEilaUcne8IkCJLxWh9KEik3JHRRHGJouM2VcGfl96S8
+TihRzZvoroed6ti6WqEBmtzw3Wodatg+VyOeph4EYpr/1wXKtx8/wApIvJSwtmVi4MFU5aMqrSDE
+6ea73Mj2tcMyo5jMd6jmeWUHK8so/joWUoHOUgwuX4Po1QYz+3dszkDqMp4fklxBwXRsW10KXzPM
+TZ+sOPAveyxindmjkW8lGy+QsRlGPfZ+G6Z6h7mjem0Y+iWlkYcV4PIWL1iwBi8saCbGS5jN2p8M
++X+Q7UNKEkROb3N6KOqkqm57TH2H3eDJAkSnh6/DNFu0Qg==
+</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+</ds:Signature></ts:token>
