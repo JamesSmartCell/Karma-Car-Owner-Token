@@ -26,9 +26,9 @@
 #define FRONT_LEFT_NEG 26
 #define REAR_RIGHT_NEG 25
 
-#define CAR_CONTRACT "0xD5bE89AD0F3Ce89e72BAf4211A980F8367E2D668"
+#define CAR_CONTRACT "0x71176a196a7f50414e1e5f747c10e3d0cf7e22d7"
 
-const char *ssid = "<SSID>";
+const char *ssid = "Karma Car Owner Token";
 const char *password = "<PASSWORD>";
 
 const char *INFURA_HOST = "rinkeby.infura.io";
@@ -39,7 +39,7 @@ string currentChallenge;
 ActionHandler *actionHandler;
 Web3 web3(INFURA_HOST, INFURA_PATH);
 
-std::string validAddress = "0xD5bE89AD0F3Ce89e72BAf4211A980F8367E2D668";
+std::string validAddress = "0x71176a196a7f50414e1e5f747c10e3d0cf7e22d7";
 
 const char *apiRoute = "api/";
 enum APIRoutes
@@ -98,6 +98,7 @@ void rightForward(int duration);
 void turnLeft(int duration);
 void turnRight(int duration);
 void backwards(int duration);
+void leftRight();
 
 void setup()
 {
@@ -149,6 +150,7 @@ void handleAPI(APIReturn *apiReturn, ScriptClient *client)
         {
             client->print("pass");
             validAddress = address;
+            leftRight();
         }
         else
         {
@@ -312,6 +314,15 @@ void turnLeft(int duration)
     actionHandler->AddCallback(duration, &stop);
 }
 
+void leftRight()
+{
+    turnLeft(300);
+    delay(300);
+    turnRight(300);
+    delay(300);
+    stop();
+}
+
 void leftForward(int duration)
 {
     digitalWrite(FRONT_LEFT, HIGH);
@@ -390,13 +401,14 @@ void setup_wifi()
             Serial.println("STA Failed to configure");
         }
 #endif
-        WiFi.begin(ssid, password);
+        //WiFi.begin(ssid, password);
+        WiFi.begin(ssid, 0);
     }
 
     wificounter = 0;
-    while (WiFi.status() != WL_CONNECTED && wificounter < 50)
+    while (WiFi.status() != WL_CONNECTED && wificounter < 30)
     {
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < 300; i++)
         {
             delay(1);
         }
@@ -404,7 +416,23 @@ void setup_wifi()
         wificounter++;
     }
 
-    if (wificounter >= 10)
+    if (wificounter >= 30)
+    {
+        Serial.println("Try Password");
+        WiFi.begin(ssid, password);
+        wificounter = 0;
+        while (WiFi.status() != WL_CONNECTED && wificounter < 30)
+        {
+            for (int i = 0; i < 300; i++)
+            {
+                delay(1);
+            }
+            Serial.print(".");
+            wificounter++;
+        }
+    }
+
+    if (wificounter >= 30)
     {
         Serial.println("Restarting ...");
         ESP.restart(); //targetting 8266 & Esp32 - you may need to replace this
